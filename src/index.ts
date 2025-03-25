@@ -2,7 +2,6 @@ import { WinsAnalysis } from './analyzers/WinsAnalysis';
 import { CsvFileReader } from './CsvFileReader';
 import { MatchReader } from './MatchReader';
 import { ConsoleReport } from './reportTargets/ConsoleReport';
-import { HtmlReport } from './reportTargets/HtmlReport';
 import { Summary } from './Summary';
 
 // Create an object that satisfies the 'DataReader' interface
@@ -19,8 +18,5 @@ const consoleSummary = new Summary(
 );
 consoleSummary.buildAndPrintReport(matchReader.matches);
 
-const htmlSummary = new Summary(
-  new WinsAnalysis('Southampton'),
-  new HtmlReport()
-);
+const htmlSummary = Summary.winsAnalysisWithHtmlReport('Southampton');
 htmlSummary.buildAndPrintReport(matchReader.matches);
